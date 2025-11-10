@@ -11,6 +11,18 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    //adds cors
+    'as cors' => [
+    'class' => \yii\filters\Cors::class,
+    'cors' => [
+        'Origin' => ['http://localhost:5173'],
+        'Access-Control-Request-Method' => ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+        'Access-Control-Allow-Headers' => ['Content-Type', 'Authorization'],
+        'Access-Control-Allow-Credentials' => false,
+        'Access-Control-Max-Age' => 86400,
+    ],
+],
+//cors ends here
     'components' => [
 
         'request' => [
