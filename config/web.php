@@ -51,8 +51,12 @@ $config = [
     'rules' => [
         [
             'class' => 'yii\rest\UrlRule',
-            'controller' => ['sale', 'offer', 'page'],
+            'controller' => ['sale','auth', 'offer', 'page'],
             'pluralize' => true,
+            'extraPatterns' => [
+                'POST register' => 'register',
+                'POST login' => 'login',
+            ],
         ],
         // Custom endpoints
         'POST sales/upload' => 'sale/upload',
