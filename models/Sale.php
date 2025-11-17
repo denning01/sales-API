@@ -31,6 +31,19 @@ class Sale extends ActiveRecord
             ['price', 'number'],
             ['description', 'string'],
             ['image', 'string', 'max' => 512],
+            ['user_id', 'integer'],
+            // user_id is not required in rules because it's always set programmatically in the controller
+            ['user_id', 'exist', 'skipOnError' => true, 'targetClass' => User::class, 'targetAttribute' => ['user_id' => 'id']],
         ];
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

@@ -36,11 +36,11 @@ $config = [
             'format' => yii\web\Response::FORMAT_JSON,
         ],
 
-        // ✅ Disable session and authentication (for pure API)
+        // ✅ API authentication using access tokens
        'user' => [
         'class' => 'yii\web\User',
         'enableSession' => false,
-        'identityClass' => 'yii\web\IdentityInterface', // dummy
+        'identityClass' => 'app\models\User',
         'loginUrl' => null,
     ],
 
@@ -48,6 +48,7 @@ $config = [
     'enablePrettyUrl' => true,
     'showScriptName' => false,
     'enableStrictParsing' => false,
+    'baseUrl' => '',
     'rules' => [
         [
             'class' => 'yii\rest\UrlRule',
